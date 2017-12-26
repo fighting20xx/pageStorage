@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>zrender</title>
+    <style>
+        .example-container {
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin: 100px;
+        }
+    </style>
+    <!--<script src="zrender.js"></script>-->
+</head>
+
+<body>
+<canvas height="400px" width="400px" class="example-container" id="my1">1</canvas>
+<canvas height="500px" width="500px" class="example-container" id="my2">2</canvas>
+<canvas height="600px" width="600px" class="example-container" id="my3">3</canvas>
+<canvas height="700px" width="700px" class="example-container" id="my4">4</canvas>
+
+
+
+
+
+<script>
+    window.onload = function() {
+//        var container = document.getElementsByClassName('example-container')[0];
+//        var zr = zrender.init(container);
+//        window.zrrr = zr;
+//        var w = zr.getWidth();
+//        var h = zr.getHeight();
+//
+//        var circle = new zrender.Circle({
+//            shape: {
+//                cx: w / 2,
+//                cy: h / 2,
+//                r: 50
+//            },
+//            style: {
+//                fill: '#FF6EBE'
+//            },
+//            draggable: true
+//        });
+//
+//        var heart = new zrender.Heart({
+//            shape: {
+//                cx: w / 2 + 20,
+//                cy: h / 2 - 40,
+//                width: 60,
+//                height: 80
+//            },
+//            draggable: true
+//        });
+//
+//        circle.setClipPath(heart);
+//        zr.add(circle);
+//
+//        var borderA = new zrender.Circle({
+//            shape: {
+//                cx: w / 2,
+//                cy: h / 2,
+//                r: 50
+//            },
+//            style: {
+//                fill: 'transparent',
+//                stroke: '#5ACFFF'
+//            }
+//        });
+//        zr.add(borderA);
+//
+//        var borderB = new zrender.Heart({
+//            shape: {
+//                cx: w / 2 + 20,
+//                cy: h / 2 - 40,
+//                width: 60,
+//                height: 80
+//            },
+//            style: {
+//                fill: 'transparent',
+//                stroke: '#5ACFFF'
+//            }
+//        });
+//
+//        zr.add(borderB);
+
+        aaa()
+
+    }
+
+function aaa() {
+    var mycanvas1 = document.getElementById("my1");
+    var mycanvas2 = document.getElementById("my2");
+    var mycanvas3 = document.getElementById("my3");
+    var mycanvas4 = document.getElementById("my4");
+
+    console.log(mycanvas1);
+    var ctx1=mycanvas1.getContext("2d");
+    var ctx2=mycanvas2.getContext("2d");
+    var ctx3=mycanvas3.getContext("2d");
+    var ctx4=mycanvas4.getContext("2d");
+
+    ctx1.fillRect(0,0,100,100);
+
+
+    ctx2.fillStyle ='red';
+    ctx2.fillRect(20,20,100,100);
+
+
+    ctx3.fillStyle ='green';
+    ctx3.fillRect(30,30,100,100);
+
+
+    ctx4.fillStyle ='orange';
+    ctx4.fillRect(40,40,100,100);
+
+
+//    ctx.restore();
+//    ctx.fillRect(90,90,100,100);
+//    ctx.restore();
+//    ctx.fillRect(100,100,100,100);
+//    ctx.restore();
+//    ctx.fillRect(110,110,100,100);
+}
+
+
+    var array = [4,8,15,16,23,42].sort()
+    console.log(array);
+
+</script>
+
+
+</body>
+
+</html>

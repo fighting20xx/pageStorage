@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>酷炫时钟</title>
+    <style>
+
+        html ,body {
+            margin: 0;
+            padding: 0;
+        }
+        #canvas, #fontGround {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #fontGround {
+            z-index: 1;
+            /*background-color: rgba(236,240,241,0.6);*/
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" >
+        当前浏览器不支持 canvas， 请更换浏览器后尝试。
+    </canvas>
+    <div id="fontGround">
+
+
+
+
+    </div>
+</body>
+
+
+
+<script>
+    digit = [
+        [
+            [0, 0, 1, 1, 1, 0, 0],
+            [0, 1, 1, 0, 1, 1, 0],
+            [1, 1, 0, 0, 0, 1, 1],
+            [1, 1, 0, 0, 0, 1, 1],
+            [1, 1, 0, 0, 0, 1, 1],
+            [1, 1, 0, 0, 0, 1, 1],
+            [1, 1, 0, 0, 0, 1, 1],
+            [1, 1, 0, 0, 0, 1, 1],
+            [0, 1, 1, 0, 1, 1, 0],
+            [0, 0, 1, 1, 1, 0, 0]
+        ], //0
+        [
+            [0, 0, 0, 1, 1, 0, 0],
+            [0, 1, 1, 1, 1, 0, 0],
+            [0, 0, 0, 1, 1, 0, 0],
+            [0, 0, 0, 1, 1, 0, 0],
+            [0, 0, 0, 1, 1, 0, 0],
+            [0, 0, 0, 1, 1, 0, 0],
+            [0, 0, 0, 1, 1, 0, 0],
+            [0, 0, 0, 1, 1, 0, 0],
+            [0, 0, 0, 1, 1, 0, 0],
+            [1, 1, 1, 1, 1, 1, 1]
+        ], //1
+        [
+            [0, 1, 1, 1, 1, 1, 0],
+            [1, 1, 0, 0, 0, 1, 1],
+            [0, 0, 0, 0, 0, 1, 1],
+            [0, 0, 0, 0, 1, 1, 0],
+            [0, 0, 0, 1, 1, 0, 0],
+            [0, 0, 1, 1, 0, 0, 0],
+            [0, 1, 1, 0, 0, 0, 0],
+            [1, 1, 0, 0, 0, 0, 0],
+            [1, 1, 0, 0, 0, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1]
+        ], //2
+        [
+            [1, 1, 1, 1, 1, 1, 1],
+            [0, 0, 0, 0, 0, 1, 1],
+            [0, 0, 0, 0, 1, 1, 0],
+            [0, 0, 0, 1, 1, 0, 0],
+            [0, 0, 1, 1, 1, 0, 0],
+            [0, 0, 0, 0, 1, 1, 0],
+            [0, 0, 0, 0, 0, 1, 1],
+            [0, 0, 0, 0, 0, 1, 1],
+            [1, 1, 0, 0, 0, 1, 1],
+            [0, 1, 1, 1, 1, 1, 0]
+        ], //3
+        [
+            [0, 0, 0, 0, 1, 1, 0],
+            [0, 0, 0, 1, 1, 1, 0],
+            [0, 0, 1, 1, 1, 1, 0],
+            [0, 1, 1, 0, 1, 1, 0],
+            [1, 1, 0, 0, 1, 1, 0],
+            [1, 1, 1, 1, 1, 1, 1],
+            [0, 0, 0, 0, 1, 1, 0],
+            [0, 0, 0, 0, 1, 1, 0],
+            [0, 0, 0, 0, 1, 1, 0],
+            [0, 0, 0, 1, 1, 1, 1]
+        ], //4
+        [
+            [1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 0, 0, 0, 0, 0],
+            [1, 1, 0, 0, 0, 0, 0],
+            [1, 1, 1, 1, 1, 1, 0],
+            [0, 0, 0, 0, 0, 1, 1],
+            [0, 0, 0, 0, 0, 1, 1],
+            [0, 0, 0, 0, 0, 1, 1],
+            [0, 0, 0, 0, 0, 1, 1],
+            [1, 1, 0, 0, 0, 1, 1],
+            [0, 1, 1, 1, 1, 1, 0]
+        ], //5
+        [
+            [0, 0, 0, 0, 1, 1, 0],
+            [0, 0, 1, 1, 0, 0, 0],
+            [0, 1, 1, 0, 0, 0, 0],
+            [1, 1, 0, 0, 0, 0, 0],
+            [1, 1, 0, 1, 1, 1, 0],
+            [1, 1, 0, 0, 0, 1, 1],
+            [1, 1, 0, 0, 0, 1, 1],
+            [1, 1, 0, 0, 0, 1, 1],
+            [1, 1, 0, 0, 0, 1, 1],
+            [0, 1, 1, 1, 1, 1, 0]
+        ], //6
+        [
+            [1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 0, 0, 0, 1, 1],
+            [0, 0, 0, 0, 1, 1, 0],
+            [0, 0, 0, 0, 1, 1, 0],
+            [0, 0, 0, 1, 1, 0, 0],
+            [0, 0, 0, 1, 1, 0, 0],
+            [0, 0, 1, 1, 0, 0, 0],
+            [0, 0, 1, 1, 0, 0, 0],
+            [0, 0, 1, 1, 0, 0, 0],
+            [0, 0, 1, 1, 0, 0, 0]
+        ], //7
+        [
+            [0, 1, 1, 1, 1, 1, 0],
+            [1, 1, 0, 0, 0, 1, 1],
+            [1, 1, 0, 0, 0, 1, 1],
+            [1, 1, 0, 0, 0, 1, 1],
+            [0, 1, 1, 1, 1, 1, 0],
+            [1, 1, 0, 0, 0, 1, 1],
+            [1, 1, 0, 0, 0, 1, 1],
+            [1, 1, 0, 0, 0, 1, 1],
+            [1, 1, 0, 0, 0, 1, 1],
+            [0, 1, 1, 1, 1, 1, 0]
+        ], //8
+        [
+            [0, 1, 1, 1, 1, 1, 0],
+            [1, 1, 0, 0, 0, 1, 1],
+            [1, 1, 0, 0, 0, 1, 1],
+            [1, 1, 0, 0, 0, 1, 1],
+            [0, 1, 1, 1, 0, 1, 1],
+            [0, 0, 0, 0, 0, 1, 1],
+            [0, 0, 0, 0, 0, 1, 1],
+            [0, 0, 0, 0, 1, 1, 0],
+            [0, 0, 0, 1, 1, 0, 0],
+            [0, 1, 1, 0, 0, 0, 0]
+        ], //9
+        [
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 1, 1, 0],
+            [0, 1, 1, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 1, 1, 0],
+            [0, 1, 1, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ] //:
+    ];             //   0---9 的数字
+</script>
+<script>
+    var WINDOW_WIDTH  ;
+    var WINDOW_HEIGHT  ;
+    var MARGIN_TOP  ;
+    var MARGIN_LEFT  ;
+    var RADIUS = 8;                     //圆 半径
+    var startTime = new Date();       //当前时间
+    var balls = [];
+    const colors = ["#99CC00", "#CC00e0", "#AA66CC", "#9933CC", "#99Cd00", "#ff9900", "#669900", "#FF8800", "#33B5E5", "#CC0000"];
+
+    window.onload = function() {
+
+        WINDOW_WIDTH = document.documentElement.clientWidth;
+        WINDOW_HEIGHT = document.documentElement.clientHeight;
+
+        MARGIN_TOP = Math.round(WINDOW_HEIGHT / 5);
+        MARGIN_LEFT = Math.round(WINDOW_WIDTH / 10);
+        RADIUS = Math.round(WINDOW_WIDTH * 4 / 5 / 108) - 1;
+
+
+
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext("2d");
+
+        canvas.width = WINDOW_WIDTH;
+        canvas.height = WINDOW_HEIGHT;
+
+
+        var timer = setInterval(
+            function() {
+                drawPicture(context);
+                update();
+            }, 50);
+    };
+
+
+
+    function update() {
+
+        if( (new Date()).getTime() >=  startTime.getTime() + 1000) {
+
+            var nomHours =   startTime.getHours();
+            var strMinutes =  startTime.getMinutes();
+            var strSeconds =   startTime.getSeconds();
+
+            var nowTime = new Date();
+            var nomHours =   nowTime.getHours();
+            var nomMinutes =  nowTime.getMinutes();
+            var nomSeconds =   nowTime.getSeconds();
+
+
+            if(parseInt(nomHours / 10) != parseInt(nomHours / 10)) {
+                addBalls(MARGIN_LEFT + 0, MARGIN_TOP, parseInt(nomHours / 10));
+            }
+            if(parseInt(nomHours % 10) != parseInt(nomHours % 10)) {
+                addBalls(MARGIN_LEFT + 15 * (RADIUS + 1), MARGIN_TOP, parseInt(nomHours / 10));
+            }
+
+            if(parseInt(nomMinutes / 10) != parseInt(strMinutes / 10)) {
+                addBalls(MARGIN_LEFT + 39 * (RADIUS + 1), MARGIN_TOP, parseInt(nomMinutes / 10));
+            }
+            if(parseInt(nomMinutes % 10) != parseInt(strMinutes % 10)) {
+                addBalls(MARGIN_LEFT + 54 * (RADIUS + 1), MARGIN_TOP, parseInt(nomMinutes % 10));
+            }
+            if(parseInt(nomSeconds / 10) != parseInt(strSeconds / 10)) {
+                addBalls(MARGIN_LEFT + 78 * (RADIUS + 1), MARGIN_TOP, parseInt(nomSeconds / 10));
+            }
+            if(parseInt(nomSeconds % 10) != parseInt(strSeconds % 10)) {
+                addBalls(MARGIN_LEFT + 93 * (RADIUS + 1), MARGIN_TOP, parseInt(nomSeconds % 10));
+            }
+            startTime = new Date();
+
+        }
+        updateBalls();
+    }
+
+    function updateBalls() {
+        for(var i = 0; i < balls.length; i++) {
+            balls[i].x += balls[i].vx;                   // 球的方向是一定的 + - 4  一直沿着正方向4   或者一直验证负方向4
+
+            var c = 1.0;
+            if(balls[i].y + RADIUS + balls[i].vy >= WINDOW_HEIGHT) {
+                c = (WINDOW_HEIGHT - (balls[i].y + RADIUS)) / balls[i].vy;
+//                console.log( c );
+            }
+            balls[i].y += balls[i].vy;                  // 正常加速度                          y方向上  逐渐减弱
+            balls[i].vy += c * balls[i].g;             //  每执行一次之后，修正加速度。            vy 先是-的向上，  然后+到向下。
+
+            if(balls[i].y >= WINDOW_HEIGHT - RADIUS) {      // 如果到底的话， 那就默认接触底边， 加速度改为-，且幅度减为原来的 3/4
+                balls[i].y = WINDOW_HEIGHT - RADIUS;
+                balls[i].vy = -Math.abs(balls[i].vy) * 0.75;
+            }
+
+            if(balls[i].y <=  RADIUS) {             //到顶的时候转弯
+                balls[i].y =  RADIUS;
+                balls[i].vy = Math.abs(balls[i].vy) * 0.75;
+            }
+        }
+
+        var cnt = 0;
+        for(var i = 0; i < balls.length; i++) {                                     // 一维数组的 筛选算法。
+            if (balls[i].x + RADIUS > 0 && balls[i].x - RADIUS < WINDOW_WIDTH) {
+                balls[cnt++] = balls[i]
+            }
+        }
+        while(balls.length > /* Math.min(300,cnt) */ cnt) {           //筛选后的长度，剩下的删除。
+            balls.pop();
+        }
+    }
+
+    function addBalls(x, y, num) {                   // 在 数字上有球的位置，添加一个球到数组中去。              x 轴， y 轴， num  第几个数字位置。
+
+        for(var i = 0; i < digit[num].length; i++)
+            for(var j = 0; j < digit[num][i].length; j++)
+                if(digit[num][i][j] == 1) {
+                    var aBall = {
+                        x: x + j * 2 * (RADIUS + 1) + (RADIUS + 1),
+                        y: y + i * 2 * (RADIUS + 1) + (RADIUS + 1),
+                        g: 1.5 + Math.random(),                                  // 加速度修正数， 促使加速度变大。
+                        vx: Math.pow(-1, Math.ceil(Math.random() * 1000)) * 4,  // math.ceil(x)返回大于参数x的最小整数//   pow() 方法可返回 x 的 y 次幂的值。   //random() 方法可返回介于 0 ~ 1 之间的一个随机数。       结果是  随机出来一个正负4 判定球的方向
+                        vy: -5,                                                   // 加速度，默认为-的， 向上移动。
+                        color:  function Color(){
+                            var r = Math.floor(Math.random()*250);
+                            var g = Math.floor(Math.random()*180);
+                            var b = Math.floor(Math.random()*120);
+                            var a = Math.random();
+                            return 'rgba('+  r +','+  g +','+  b +','+a+')';
+                        }() //colors[Math.floor(Math.random() * colors.length)]
+                    }
+
+                    balls.push(aBall)
+                }
+    }
+
+    function drawPicture(cxt) {
+
+        cxt.clearRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);              // 清空屏幕  画布
+
+        var hours =   startTime.getHours();
+        var minutes =  startTime.getMinutes();
+        var seconds =   startTime.getSeconds();
+
+        showDigitTime(MARGIN_LEFT, MARGIN_TOP, parseInt(hours / 10), cxt)
+        showDigitTime(MARGIN_LEFT + 15 * (RADIUS + 1), MARGIN_TOP, parseInt(hours % 10), cxt)
+        showDigitTime(MARGIN_LEFT + 30 * (RADIUS + 1), MARGIN_TOP, 10, cxt)
+        showDigitTime(MARGIN_LEFT + 39 * (RADIUS + 1), MARGIN_TOP, parseInt(minutes / 10), cxt);
+        showDigitTime(MARGIN_LEFT + 54 * (RADIUS + 1), MARGIN_TOP, parseInt(minutes % 10), cxt);
+        showDigitTime(MARGIN_LEFT + 69 * (RADIUS + 1), MARGIN_TOP, 10, cxt);
+        showDigitTime(MARGIN_LEFT + 78 * (RADIUS + 1), MARGIN_TOP, parseInt(seconds / 10), cxt);
+        showDigitTime(MARGIN_LEFT + 93 * (RADIUS + 1), MARGIN_TOP, parseInt(seconds % 10), cxt);
+
+        for(var i = 0; i < balls.length; i++) {
+            cxt.fillStyle = balls[i].color;
+            cxt.beginPath();
+            cxt.arc(balls[i].x, balls[i].y, RADIUS, 0, 2 * Math.PI, true);
+            cxt.closePath();
+            cxt.fill();
+        }
+    }
+
+    function showDigitTime(x, y, num, cxt) {              //x坐标 ， y坐标， num 显示的第几个数字，   cxt 上下文。
+
+        cxt.fillStyle = "#1ABC9C";
+
+        for(var i = 0; i < digit[num].length; i++)
+            for(var j = 0; j < digit[num][i].length; j++)
+                if(digit[num][i][j] == 1) {
+                    cxt.beginPath();
+                    cxt.arc(x + j * 2 * (RADIUS + 1) + (RADIUS + 1), y + i * 2 * (RADIUS + 1) + (RADIUS + 1), RADIUS, 0, 2 * Math.PI)      //arc(x坐标，y坐标，半径， 开始角度，弧度)
+                    cxt.closePath();
+                    cxt.fill()
+                }
+    }         //x坐标 ， y坐标， num 显示的第几个数字，   cxt 上下文。
+</script>
+
+
+</html>
