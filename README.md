@@ -1,0 +1,2 @@
+# pageStorage
+some static  pages
