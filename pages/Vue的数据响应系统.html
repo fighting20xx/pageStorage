@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <title>Vue的数据响应系统</title>
+</header>
+<body>
+<div>
+    私有的 var dep =  new Dep();   只针对某个属性触发；
+</div>
+<div>
+    公用的 var dep =  new Dep();   触发所有；
+</div>
+<script>
+
+
+
+
+function Observer(data) {
+    this.walk(data);
+}
+Observer.prototype.walk = function (data) {
+    var keys = Object.keys(data);
+    for(var i =0;i<keys.length;i++){
+        defineRective(data,keys[i],data[keys[i]]);
+    }
+};
+function defineRective(data,key,val) {
+    observer(val);
+    var dep =  new Dep();               // 私有的dep
+    Object.defineProperty(data,key,{
+        enumerable:true,
+        configurable:true,
+        get:function (key) {
+            dep.addSub(Dep.target);
+            return val;
+        },
+        set:function (newVal) {
+            if(val === newVal){
+                return
+            }
+            dep.notify();
+            observer(newVal);
+        }
+    })
+}
+function observer(data) {
+    if(Object.prototype.toString.call(data) !== '[object Object]'){
+        return;
+    }
+    new Observer(data);
+}
+
+
+
+
+
+Dep.target = null;
+function pushTarget(watch) {
+    Dep.target = watch;
+}
+function Dep() {
+    this.subs = [];
+}
+Dep.prototype.addSub = function (watch) {
+    this.subs.push(watch)
+};
+Dep.prototype.notify = function () {
+    this.subs.forEach(function (value,index) {
+        value.fn();
+    })
+};
+
+// var dep =  new Dep();    // 共有的dep
+
+
+
+var __data = {};
+function Watch(exp,fn) {
+    this.exp = exp;
+    this.fn = fn;
+    pushTarget(this);
+    __data[exp];
+}
+
+
+
+
+
+var Obj = {
+    a:1,
+    b:{
+        c:1,
+        d:2
+    }
+};
+observer(Obj);
+__data = Obj;
+
+new Watch("a",function () {    console.log("111111"); });
+new Watch("b",function () {    console.log("2222");   });
+
+Obj.a =5;
+
+
+
+
+</script>
+</body>
+</html>
