@@ -1,0 +1,24 @@
+{
+  "name": "pages",
+  "version": "1.0.0",
+  "description": "some static  pages",
+  "main": "hello.js",
+  "dependencies": {},
+  "devDependencies": {
+    "flow-bin": "^0.62.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "flow": "flow"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kisstheair/pageStorage.git"
+  },
+  "author": "seven-lli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kisstheair/pageStorage/issues"
+  },
+  "homepage": "https://github.com/kisstheair/pageStorage#readme"
+}

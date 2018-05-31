@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>组态工具</title>
+	<script src="plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="plugins/jtopo/jtopo-0.4.8-min.js" type="text/javascript"></script>
+    <script src="plugins/jtopo/config.js" type="text/javascript"></script>
+
+	<script src="plugins/vue-2.3.3/vue.min.js" type="text/javascript"></script>
+
+
+	<link rel="stylesheet" href="plugins/colpick/colpick.css" />
+	<script src="plugins/colpick/colpick.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" href="plugins/element-ui-1.3.3/element-ui.css" />
+	<script src="plugins/element-ui-1.3.3/element-ui.js" type="text/javascript"></script>
+
+	<!-- 前端开发框架Bootstrap -->
+	<link rel="stylesheet" href="plugins/bootstrap-3.3.7/bootstrap.min.css" />
+	<link rel="stylesheet" href="base.css">
+
+
+</head>
+<body >
+	<div id="top">
+		<div id="content_wrap">
+			<div id="left_menu">
+				<el-collapse v-model="activeName" accordion>
+					<el-collapse-item title="配电图标" name="1">
+						<div ondragstart="imageDragHandle.drag(event)">
+
+							<img src="svg/1-electric/text.svg" class="imgItem" name="text" alt="文本" data-vPropertyEx4="Middle_Center">
+							<img src="svg/1-electric/amperemeter.svg" class="imgItem" name="amperemeter">
+							<img src="svg/1-electric/arrester.svg" class="imgItem" name="arrester">
+							<img src="svg/1-electric/capacitor.svg" class="imgItem" name="capacitor">
+							<img src="svg/1-electric/chuxian.svg" class="imgItem" name="chuxian" data-vPropertyAnimation="color|opaticy" >
+							<img src="svg/1-electric/circuit_breaker.svg" class="imgItem" name="circuit_breaker">
+							<img src="svg/1-electric/cloud.svg" class="imgItem" name="cloud">
+							<img src="svg/1-electric/computer.svg" class="imgItem" name="computer">
+							<img src="svg/1-electric/current.svg" class="imgItem" name="current">
+							<img src="svg/1-electric/diode.svg" class="imgItem" name="diode">
+							<img src="svg/1-electric/energy.svg" class="imgItem" name="energy">
+							<img src="svg/1-electric/fuse.svg" class="imgItem" name="fuse">
+							<img src="svg/1-electric/fuses.svg" class="imgItem" name="fuses">
+							<img src="svg/1-electric/grounding.svg" class="imgItem" name="grounding">
+							<img src="svg/1-electric/lightcontrol.svg" class="imgItem" name="lightcontrol">
+							<img src="svg/1-electric/outgoing_line.svg" class="imgItem" name="outgoing_line">
+							<img src="svg/1-electric/lineout.svg" class="imgItem" name="lineout">
+							<img src="svg/1-electric/pilot.svg" class="imgItem" name="pilot">
+							<img src="svg/1-electric/resistance.svg" class="imgItem" name="resistance">
+							<img src="svg/1-electric/s-resistance.svg" class="imgItem" name="s-resistance">
+							<img src="svg/1-electric/servers.svg" class="imgItem" name="servers">
+							<img src="svg/1-electric/switch.svg" class="imgItem" name="switch">
+
+							<img src="svg/1-electric/transformer.svg" class="imgItem" name="transformer">
+							<img src="svg/1-electric/transistor.svg" class="imgItem" name="transistor">
+							<img src="svg/1-electric/voltmeter.svg" class="imgItem" name="voltmeter">
+
+
+
+
+
+						</div>
+					</el-collapse-item>
+
+					<el-collapse-item title="空调末端矢量组件" name="2">
+						<div  ondragstart="imageDragHandle.drag(event)">
+							<img src="svg/2-air-condition/airdamper/airdamperlineoff.svg" class="imgItem" name="airdamperlineoff">
+							<img src="svg/2-air-condition/airdamper/airdamperlineON.svg" class="imgItem" name="airdamperlineON">
+							<img src="svg/2-air-condition/airdamper/airdamperlineONhelf.svg" class="imgItem" name="airdamperlineONhelf">
+							<img src="svg/2-air-condition/airdamper/airdamperoff.svg" class="imgItem" name="airdamperoff">
+							<img src="svg/2-air-condition/airdamper/airdamperON.svg" class="imgItem" name="airdamperON">
+							<img src="svg/2-air-condition/airdamper/airdamperONhelf.svg" class="imgItem" name="airdamperONhelf">
+							<img src="svg/2-air-condition/Containe/vessel1.svg" class="imgItem" name="vessel1">
+							<img src="svg/2-air-condition/Containe/vessel2.svg" class="imgItem" name="vessel2">
+							<img src="svg/2-air-condition/Containe/vessel3.svg" class="imgItem" name="vessel3">
+							<img src="svg/2-air-condition/Containe/vessel4.svg" class="imgItem" name="vessel4">
+							<img src="svg/2-air-condition/Containe/vessel5.svg" class="imgItem" name="vessel5">
+							<img src="svg/2-air-condition/Containe/vessel6.svg" class="imgItem" name="vessel6">
+							<img src="svg/2-air-condition/Containe/vessel7.svg" class="imgItem" name="vessel7">
+							<img src="svg/2-air-condition/Containe/vessel8.svg" class="imgItem" name="vessel8">
+							<img src="svg/2-air-condition/Containe/vessel9.svg" class="imgItem" name="vessel9">
+							<img src="svg/2-air-condition/fan/aaa.svg" class="imgItem" name="aaa">
+							<img src="svg/2-air-condition/fan/cage.svg" class="imgItem" name="cage">
+							<img src="svg/2-air-condition/fan/draguhtleft.svg" class="imgItem" name="draguhtleft">
+							<img src="svg/2-air-condition/fan/draguhtright.svg" class="imgItem" name="draguhtright">
+							<img src="svg/2-air-condition/fan/fanbottom.svg" class="imgItem" name="fanbottom">
+							<img src="svg/2-air-condition/fan/fangreenC.svg" class="imgItem" name="fangreenC" data-vPropertyAnimation="color|circle"   data-vPropertySrc2="statics/BA/svg/2-air-condition/fan/fangreen2C.svg"  data-vPropertySrc3="statics/BA/svg/2-air-condition/fan/fang
+reen3C.svg"  data-vPropertySrc4="statics/BA/svg/2-air-condition/fan/fangreen4C.svg">
+							<img src="svg/2-air-condition/fan/fanleftC.svg" class="imgItem" name="fanleftC" data-vPropertyAnimation="color|circle"   data-vPropertySrc2="statics/BA/svg/2-air-condition/fan/fanleft2C.svg"  data-vPropertySrc3="statics/BA/svg/2-air-condition/fan/fanleft
+3C.svg"  data-vPropertySrc4="statics/BA/svg/2-air-condition/fan/fanleft4C.svg">
+							<img src="svg/2-air-condition/fan/fanredC.svg" class="imgItem" name="fanredC" data-vPropertyAnimation="color|circle"   data-vPropertySrc2="statics/BA/svg/2-air-condition/fan/fanred2C.svg"  data-vPropertySrc3="statics/BA/svg/2-air-condition/fan/fanred3C.s
+vg"  data-vPropertySrc4="statics/BA/svg/2-air-condition/fan/fanred4C.svg">
+							<img src="svg/2-air-condition/fan/fanrightC.svg" class="imgItem" name="fanrightC" data-vPropertyAnimation="color|circle"   data-vPropertySrc2="statics/BA/svg/2-air-condition/fan/fanright2C.svg"  data-vPropertySrc3="statics/BA/svg/2-air-condition/fan/fanr
+ight3C.svg"  data-vPropertySrc4="statics/BA/svg/2-air-condition/fan/fanright4C.svg">
+							<img src="svg/2-air-condition/fan/flabellumC.svg" class="imgItem" name="flabellumC" data-vPropertyAnimation="color|circle"   data-vPropertySrc2="statics/BA/svg/2-air-condition/fan/flabellum2C.svg"  data-vPropertySrc3="statics/BA/svg/2-air-condition/fan/f
+labellum3C.svg"  data-vPropertySrc4="statics/BA/svg/2-air-condition/fan/flabellum4C.svg">
+							<img src="svg/2-air-condition/fan/flabellumgreenC.svg" class="imgItem" name="flabellumgreenC" data-vPropertyAnimation="color|circle"   data-vPropertySrc2="statics/BA/svg/2-air-condition/fan/flabellumgreen2C.svg"  data-vPropertySrc3="statics/BA/svg/2-air-
+condition/fan/flabellumgreen3C.svg"  data-vPropertySrc4="statics/BA/svg/2-air-condition/fan/flabellumgreen4C.svg">
+							<img src="svg/2-air-condition/miscellaneous/coldhotcoil.svg" class="imgItem" name="coldhotcoil">
+							<img src="svg/2-air-condition/miscellaneous/condensingCoil.svg" class="imgItem" name="condensingCoil">
+							<img src="svg/2-air-condition/miscellaneous/controlInstrument.svg" class="imgItem" name="controlInstrument">
+							<img src="svg/2-air-condition/miscellaneous/deiceControl1.svg" class="imgItem" name="deiceControl1">
+							<img src="svg/2-air-condition/miscellaneous/deiceControl2.svg" class="imgItem" name="deiceControl2">
+							<img src="svg/2-air-condition/miscellaneous/hotcoil.svg" class="imgItem" name="hotcoil">
+							<img src="svg/2-air-condition/miscellaneous/Humiditymeter.svg" class="imgItem" name="Humiditymeter">
+							<img src="svg/2-air-condition/miscellaneous/humidifier.svg" class="imgItem" name="humidifier">
+							<img src="svg/2-air-condition/miscellaneous/strainer.svg" class="imgItem" name="strainer">
+
+
+						</div>
+					</el-collapse-item>
+
+					<el-collapse-item title="冷却机组件" name="3">
+						<div ondragstart="imageDragHandle.drag(event)">
+							<img src="svg/3-cooler/duct/highblue/bendbluewater.svg" class="imgItem" name="bendbluewater">
+							<img src="svg/3-cooler/duct/highblue/linebluewaterF.svg" class="imgItem" name="linebluewaterF" data-vPropertyAnimation="color|flow"   data-vPropertySrc2="statics/BA/svg/3-cooler/duct/highblue/linebluewater2F.svg">
+							<img src="svg/3-cooler/duct/highblue/linebluewaterllF.svg" class="imgItem" name="linebluewaterllF" data-vPropertyAnimation="color|flow"   data-vPropertySrc2="statics/BA/svg/3-cooler/duct/highblue/linebluewaterll2F.svg">
+							<img src="svg/3-cooler/duct/highblue/portbluewater.svg" class="imgItem" name="portbluewater">
+							<img src="svg/3-cooler/duct/metall/bendmetallochrome.svg" class="imgItem" name="bendmetallochrome">
+							<img src="svg/3-cooler/duct/metall/linemetallochromeF.svg" class="imgItem" name="linemetallochromeF" data-vPropertyAnimation="color|flow"   data-vPropertySrc2="statics/BA/svg/3-cooler/duct/metall/linemetallochrome2F.svg">
+							<img src="svg/3-cooler/duct/metall/linemetallochromellF.svg" class="imgItem" name="linemetallochromellF" data-vPropertyAnimation="color|flow"   data-vPropertySrc2="statics/BA/svg/3-cooler/duct/metall/linemetallochromell2F.svg">
+							<img src="svg/3-cooler/duct/metall/portmetallochrome.svg" class="imgItem" name="portmetallochrome">
+							<img src="svg/3-cooler/duct/lowblue/bendlowbluewater.svg" class="imgItem" name="bendlowbluewater">
+							<img src="svg/3-cooler/duct/lowblue/linelowbluewaterF.svg" class="imgItem" name="linelowbluewaterF" data-vPropertyAnimation="color|flow"   data-vPropertySrc2="statics/BA/svg/3-cooler/duct/lowblue/linelowbluewater2F.svg">
+							<img src="svg/3-cooler/duct/lowblue/linelowbluewaterllF.svg" class="imgItem" name="linelowbluewaterllF" data-vPropertyAnimation="color|flow"   data-vPropertySrc2="statics/BA/svg/3-cooler/duct/lowblue/linelowbluewaterll2F.svg">
+							<img src="svg/3-cooler/duct/lowblue/portlowbluewater.svg" class="imgItem" name="portlowbluewater">
+							<img src="svg/3-cooler/duct/red/bendredhotwater.svg" class="imgItem" name="bendredhotwater">
+							<img src="svg/3-cooler/duct/red/lineredhotwaterF.svg" class="imgItem" name="lineredhotwaterF" data-vPropertyAnimation="color|flow"   data-vPropertySrc2="statics/BA/svg/3-cooler/duct/red/lineredhotwater2F.svg">
+							<img src="svg/3-cooler/duct/red/lineredhotwaterllF.svg" class="imgItem" name="lineredhotwaterllF" data-vPropertyAnimation="color|flow"   data-vPropertySrc2="statics/BA/svg/3-cooler/duct/red/lineredhotwaterll2F.svg">
+							<img src="svg/3-cooler/duct/red/partredhotwater.svg" class="imgItem" name="partredhotwater">
+							<img src="svg/3-cooler/duct/yellow/bendyellowwater.svg" class="imgItem" name="bendyellowwater">
+							<img src="svg/3-cooler/duct/yellow/lineyellowwaterF.svg" class="imgItem" name="lineyellowwaterF" data-vPropertyAnimation="color|flow"   data-vPropertySrc2="statics/BA/svg/3-cooler/duct/yellow/lineyellowwater2F.svg">
+							<img src="svg/3-cooler/duct/yellow/lineyellowwaterllF.svg" class="imgItem" name="lineyellowwaterllF" data-vPropertyAnimation="color|flow"   data-vPropertySrc2="statics/BA/svg/3-cooler/duct/yellow/lineyellowwaterll2F.svg">
+							<img src="svg/3-cooler/duct/yellow/partyellowwater.svg" class="imgItem" name="partyellowwater">
+							<img src="svg/3-cooler/unitcooler/waterscreen/flowscreen.svg" class="imgItem" name="flowscreen">
+							<img src="svg/3-cooler/unitcooler/waterscreen/waterscreen1.svg" class="imgItem" name="waterscreen1">
+							<img src="svg/3-cooler/unitcooler/waterscreen/waterscreen2.svg" class="imgItem" name="waterscreen2">
+							<img src="svg/3-cooler/unitcooler/waterscreen/waterscreen3.svg" class="imgItem" name="waterscreen3">
+
+							<img src="svg/3-cooler/unitcooler/airhandling/airhanding.svg" class="imgItem" name="airhanding">
+							<img src="svg/3-cooler/unitcooler/blowercoil/blowercoil.svg" class="imgItem" name="blowercoil">
+							<img src="svg/3-cooler/unitcooler/colorbutton/greenbutton.svg" class="imgItem" name="greenbutton" data-vPropertyAnimation="color|bright"   data-vPropertySrc2="statics/BA/svg/3-cooler/unitcooler/colorbutton/graybutton.svg" >
+							<img src="svg/3-cooler/unitcooler/colorbutton/redbutton.svg" class="imgItem" name="redbutton" data-vPropertyAnimation="color|bright"   data-vPropertySrc2="statics/BA/svg/3-cooler/unitcooler/colorbutton/graybutton.svg">
+							<img src="svg/3-cooler/unitcooler/coolingtower/coolingtowerbottom.svg" class="imgItem" name="coolingtowerbottom">
+							<img src="svg/3-cooler/unitcooler/coolwater1/coolingtower.svg" class="imgItem" name="coolingtower">
+							<img src="svg/3-cooler/unitcooler/coolwater1/waterdot.svg" class="imgItem" name="waterdot">
+							<img src="svg/3-cooler/unitcooler/device/冷却机组.svg" class="imgItem" name="冷却机组">
+							<img src="svg/3-cooler/unitcooler/device/冷却泵.svg" class="imgItem" name="冷却泵">
+							<img src="svg/3-cooler/unitcooler/device/电机.svg" class="imgItem" name="电机">
+							<img src="svg/3-cooler/unitcooler/devisionwater/deversionwater.svg" class="imgItem" name="deversionwater">
+							<img src="svg/3-cooler/unitcooler/handle/handlebtm.svg" class="imgItem" name="handlebtm">
+							<img src="svg/3-cooler/unitcooler/handle/handlecenter.svg" class="imgItem" name="handlecenter">
+							<img src="svg/3-cooler/unitcooler/handle/handletop.svg" class="imgItem" name="handletop">
+							<img src="svg/3-cooler/unitcooler/lawsm/reproduction.svg" class="imgItem" name="reproduction">
+							<img src="svg/3-cooler/unitcooler/slidebutton/slidebutton1.svg" class="imgItem" name="slidebutton1">
+							<img src="svg/3-cooler/unitcooler/slidebutton/slidebutton2.svg" class="imgItem" name="slidebutton2">
+							<img src="svg/3-cooler/unitcooler/waterpump/waternew.svg" class="imgItem" name="waternew">
+							<img src="svg/3-cooler/unitcooler/waterpump/waterpump.svg" class="imgItem" name="waterpump">
+
+
+						</div>
+					</el-collapse-item>
+					<el-collapse-item title="排水" name="4">
+						<div  ondragstart="imageDragHandle.drag(event)">
+							<img src="svg/4-drainage/setgetwater.svg" class="imgItem" name="setgetwater">
+
+						</div>
+					</el-collapse-item>
+
+
+				</el-collapse>
+			</div>
+			<div id="center_content">
+				<div id="content_header">
+
+					<el-button-group>
+						<el-button   size="small" icon="el-icon-edit"   @click="graphTool.create">新建拓扑图</el-button>
+						<el-button   size="small" icon="el-icon-edit"   @click="graphTool.open">打开拓扑图</el-button>
+						<el-button   size="small" icon="el-icon-share"  @click="graphTool.save">保存拓扑图</el-button>
+						<el-button   size="small" icon="el-icon-delete" @click="graphTool.del">删除拓扑图</el-button>
+					</el-button-group>
+
+
+
+					<el-button-group>
+						<!--<el-button   size="small" icon="el-icon-edit"  @click="mapTool.zoomOut">整体放大</el-button>-->
+						<!--<el-button   size="small" icon="el-icon-share"  @click="mapTool.zoomIn">整体缩小</el-button>-->
+						<!--<el-button   size="small" icon="el-icon-delete" @click="mapTool.beCenter">居中显示</el-button>-->
+						<el-button   size="small" icon="el-icon-share">
+							<el-dropdown size="small" trigger="click">
+							    <span class="el-dropdown-link">切换鼠标模式<i class="el-icon-arrow-down el-icon--right"></i></span>
+								<el-dropdown-menu slot="dropdown">
+									<el-dropdown-item onclick="mapTool.editIcon('select')">框选模式</el-dropdown-item>
+									<el-dropdown-item onclick="mapTool.editIcon('normal')">拖动模式</el-dropdown-item>
+									<el-dropdown-item onclick="mapTool.editIcon('edit')">编辑模式</el-dropdown-item>
+								</el-dropdown-menu>
+							</el-dropdown>
+						</el-button>
+					</el-button-group>
+
+					<span style="float: right">
+						<el-button-group >
+							<el-button   size="small" icon="el-icon-delete" id="colorpicker" @click="mapTool.backColor">背景色</el-button>
+							<el-button   size="small" icon="el-icon-delete" @click="mapTool">背景图</el-button>
+							<el-button   size="small" icon="el-icon-delete" @click="mapTool.fullScreen">全屏显示</el-button>
+						</el-button-group>
+					</span>
+				</div>
+				<div id="content_main" ondrop="imageDragHandle.ondropImage(event)" ondragover="imageDragHandle.onDropOver(event)">
+					<canvas  id="canvas" width="10" height="10"></canvas>
+				</div>
+			</div>
+			<div id="right_menu">
+				<div id="right_top" >
+
+						<span class="infoHeader">拓扑图信息</span>
+
+						<el-input v-model="Graph.vXmbm" readonly>
+							<template slot="prepend">项目编码</template>
+						</el-input>
+						<el-input v-model="Graph.iId" readonly>
+							<template slot="prepend">唯一码</template>
+						</el-input>
+
+
+						<el-input v-model="Graph.vChartMc"  placeholder="请输入内容" >
+							<template slot="prepend">组态图名称</template>
+						</el-input>
+
+
+						<el-input v-model="Graph.vChartValue"  placeholder="请输入内容">
+							<template slot="prepend">组态图值</template>
+						</el-input>
+
+						<el-input v-model="Graph.vChartType"  placeholder="请输入内容">
+							<template slot="prepend">组态图类型</template>
+						</el-input>
+
+						<el-input v-model="Graph.vChartStatus" >
+							<template slot="prepend">组态图状态</template>
+						</el-input>
+
+
+
+						<span class="infoHeader">信息点</span>
+
+
+
+						<el-input :value="icons.iId" readonly>
+							<template slot="prepend">信息点id</template>
+						</el-input>
+						<el-input :value="icons.vObjectbm" readonly>
+							<template slot="prepend">编码</template>
+						</el-input>
+
+						<el-input v-model="icons.vObjectname"  readonly>
+							<template slot="prepend">类型</template>
+						</el-input>
+						<el-input v-model="icons.vPropertyText" >
+							<template slot="prepend">显示文本</template>
+						</el-input>
+
+						<div class="innerSelect" >
+							<span>文本位置</span>
+							<select slot="append"  v-model="icons.vPropertyEx4" >
+								<option disabled value="">请选择</option>
+								<option  value="Top_Left">左上</option>
+								<option  value="Top_Center">正上</option>
+								<option  value="Top_Right">右上</option>
+								<option  value="Middle_Left">左中</option>
+								<option  value="Middle_Center">正中</option>
+								<option  value="Middle_Right">右中</option>
+								<option  value="Bottom_Left">左下</option>
+								<option  value="Bottom_Center">正下</option>
+								<option  value="Bottom_Right">右下</option>
+							</select>
+						</div>
+						<el-input v-model="icons.vPropertyX">
+							<template slot="prepend">X轴</template>
+						</el-input>
+
+						<el-input v-model="icons.vPropertyY" >
+							<template slot="prepend">Y轴</template>
+						</el-input>
+
+						<el-input v-model="icons.vPropertyWidth" >
+							<template slot="prepend">宽度</template>
+						</el-input>
+
+						<el-input v-model="icons.vPropertyHeight" >
+							<template slot="prepend">高度</template>
+						</el-input>
+						<el-input v-model="icons.vPropertyEx1" >
+							<template slot="prepend">角度</template>
+						</el-input>
+
+						<el-input v-model="icons.vPropertyEx2">
+							<template slot="prepend">填充颜色</template>
+							<el-button slot="append" icon="el-icon-search"  id="pickColor"   @click="pickColor"></el-button>
+						</el-input>
+
+
+						<div class="innerSelect">
+							<span>输入类型</span>
+							<select slot="append"  v-model="icons.vPropertyAdiotype" >
+								<option disabled value="">请选择</option>
+								<option v-if="item.vTablebm == 18" v-for="item in dictCodeArray" :value="item.vFiledbm">{{item.vFiledmc}}</option>
+							</select>
+						</div>
+
+						<div class="innerSelect">
+							<span>数据类型</span>
+							<select slot="append"  v-model="icons.vPropertyDatatype" >
+								<option disabled value="">请选择</option>
+								<option v-if="item.vTablebm == 17" v-for="item in dictCodeArray" :value="item.vFiledbm">{{item.vFiledmc}}</option>
+							</select>
+						</div>
+						<div class="innerSelect" v-show="haveCircle">
+							<span>转动速度</span>
+							<select slot="append"  v-model="icons.vPropertyEx3" >
+								<option  value="null">请选择</option>
+								<option  value="0">停止</option>
+								<option  value="1">低速</option>
+								<option  value="2">中速</option>
+								<option  value="3">高速</option>
+							</select>
+						</div>
+						<div class="innerSelect" v-show="haveFlow">
+							<span>是否流动</span>
+							<select slot="append"  v-model="icons.vPropertyEx3" >
+								<option  value="null">请选择</option>
+								<option  value="0">不流动</option>
+								<option  value="1">流动</option>
+							</select>
+						</div>
+						<div class="innerSelect" v-show="haveBright">
+							<span>是否点亮</span>
+							<select slot="append"  v-model="icons.vPropertyEx3" >
+								<option  value="null">请选择</option>
+								<option  value="1">熄灭</option>
+								<option  value="0">点亮</option>
+							</select>
+						</div>
+
+						<el-input v-model="icons.vPropertyValue" >
+							<template slot="prepend">值</template>
+						</el-input>
+
+						<!--<el-button   type="primary" @click="openSendDirective">发送请求</el-button>-->
+						<!--<el-input v-model="icons.vPropertyMaxvalue" >-->
+							<!--<template slot="prepend">最大值</template>-->
+						<!--</el-input>-->
+						<!--<el-input v-model="icons.vPropertyMinvalue" >-->
+							<!--<template slot="prepend">最小值</template>-->
+						<!--</el-input>-->
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="rightContextMenu" >
+		<span onclick="rightClickHandle.circleToright()"><a >顺时针旋转</a></span>
+		<span onclick="rightClickHandle.circleToleft()"><a >逆时针旋转</a></span>
+		<span onclick="rightClickHandle.changeColor()"><a >更改颜色</a></span>
+		<span onclick="rightClickHandle.addLine()"><a >添加线</a></span>
+		<span onclick="rightClickHandle.zoomOut()"><a >放大</a></span>
+		<span onclick="rightClickHandle.zoomIn()"><a>缩小</a></span>
+		<span onclick="rightClickHandle.deleteSelf()"><a >删除该图形</a></span>
+	</div>
+
+	<div id="hoverContextMenu" >
+		<span onclick="hoverHandle.sendDirective()"><a >发送指令</a></span>
+	</div>
+
+
+
+</body>
+<script src="BAProductTool_util.js"></script>
+<script src="BAProductTool_base.js"></script>
+<script src="BAProductTool.js"></script>
+</html>

@@ -32,17 +32,31 @@
             position: fixed;
             top: 0;
             left: 0;
-
+            margin-left: -9%;
             width: 10%;
             z-index: 1;
-            background-color: rgba(126,126,124,0.1);
+            background-color: rgba(12,12,124,0.1);
+            transition:  all 0.5s;
+            animation: easyIn 4s;
+        }
+        @keyframes easyIn {
+            0% {
+                margin: 0;
+            }
+            100% {
+                margin-left: -9%;
+            }
+        }
+
+        #fontGround:hover{
+           margin: 0;
         }
         #fontGround .item{
             padding: 15px;
             margin: 5px;
             display: block;
             border: 1px solid #f7eded;
-            background-color: #f7eded ;
+            background-color: #1AA094 ;
             text-align:center;
         }
         #fontGround .item:hover{
@@ -66,6 +80,7 @@
     pageArray.push({name:"炫酷时钟"   ,   url:"pages/炫酷时钟.html"});
     pageArray.push({name:"蝴蝶"   ,   url:"pages/蝴蝶demo.html"});
     pageArray.push({name:"星球大战"   ,   url:"pages/canvas星球大战/index.html"});
+    pageArray.push({name:"h5组态工具"   ,   url:"pages/h5组态工具/BAProductTool.html"});
 
     window.onload=function () {
         console.log("初始化");
