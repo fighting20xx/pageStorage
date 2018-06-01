@@ -15,17 +15,17 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BAProductTool.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BAProductTool.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BAProductTool.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+            <state relative-caret-position="253">
+              <caret line="146" column="126" lean-forward="true" selection-start-line="146" selection-start-column="126" selection-end-line="146" selection-end-column="126" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
@@ -96,8 +96,8 @@
       <list>
         <option value="$PROJECT_DIR$/BAProductTool.js" />
         <option value="$PROJECT_DIR$/BAProductTool_util.js" />
-        <option value="$PROJECT_DIR$/BAProductTool.html" />
         <option value="$PROJECT_DIR$/../../index.html" />
+        <option value="$PROJECT_DIR$/BAProductTool.html" />
       </list>
     </option>
   </component>
@@ -174,12 +174,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1527755326576</updated>
-      <workItem from="1527755327937" duration="2595000" />
+      <workItem from="1527755327937" duration="3250000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2595000" />
+    <option name="totallyTimeSpent" value="3250000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -244,18 +244,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BAProductTool.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="41" column="27" lean-forward="true" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BAProductTool.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="146" column="126" lean-forward="true" selection-start-line="146" selection-start-column="126" selection-end-line="146" selection-end-column="126" />
           <folding />
         </state>
       </provider>
