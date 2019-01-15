@@ -1,0 +1,226 @@
+#home {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#home h1 {
+    font-size: 45px;
+}
+
+#blogTitle h2 {
+    float: right;
+}
+
+#topics .postTitle {
+    font-size: 20px;
+    text-align: center;
+    padding-left: 0;
+}
+
+#topics .postTitle a {
+    color: #000;
+}
+
+#comment_form_container .comment_textarea {
+    width: 932px;
+    height: 60px;
+    min-width: 932px;
+    max-width: 932px;
+    min-height: 60px;
+}
+.day .postTitle {
+    border-left: 0;
+}
+.day .postTitle a {
+    padding-left: 0;
+    font-weight: bold;
+    color: #000;
+}
+
+.postTitle a:hover {
+    margin-left: 0;
+    color: #21759b;
+}
+
+body {
+    background-image: url("https://files-cdn.cnblogs.com/files/meowv/bg.gif");
+    background-position: initial;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-origin: initial;
+    background-clip: initial;
+    height: 100%;
+    width: 100%;
+}
+
+#home {
+    opacity: 0.7;
+}
+
+.wall {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+div#midground {
+    background: url("https://files-cdn.cnblogs.com/files/meowv/midground.gif");
+    z-index: -1;
+    -webkit-animation: cc 200s linear infinite;
+    -moz-animation: cc 200s linear infinite;
+    -o-animation: cc 200s linear infinite;
+    animation: cc 200s linear infinite;
+}
+
+div#foreground {
+    background: url("https://files-cdn.cnblogs.com/files/meowv/foreground.gif");
+    z-index: -2;
+    -webkit-animation: cc 253s linear infinite;
+    -o-animation: cc 253s linear infinite;
+    -moz-animation: cc 253s linear infinite;
+    animation: cc 253s linear infinite;
+}
+
+div#flotage {
+    background: url("https://files-cdn.cnblogs.com/files/meowv/midground.gif");
+    z-index: -4;
+    -webkit-animation: da 200s linear infinite;
+    -o-animation: da 200s linear infinite;
+    animation: da 200s linear infinite;
+}
+
+@-webkit-keyframes cc {
+    from {
+        background-position: 0 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        background-position: 600% 0;
+    }
+}
+
+@-o-keyframes cc {
+    from {
+        background-position: 0 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        background-position: 600% 0;
+    }
+}
+
+@-moz-keyframes cc {
+    from {
+        background-position: 0 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        background-position: 600% 0;
+    }
+}
+
+@keyframes cc {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 600% 0;
+    }
+}
+
+@keyframes da {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 600%;
+    }
+}
+
+@-webkit-keyframes da {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 600%;
+    }
+}
+
+@-moz-keyframes da {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 600%;
+    }
+}
+
+@-ms-keyframes da {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 600%;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff;
+    -webkit-box-shadow: inset 1px 1px 2px #E0E0E0;
+    border: 1px solid #D8D8D8;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e8e8e8;
+    -webkit-box-shadow: inset 1px 1px 2px rgba(155, 155, 155, 0.4);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    -webkit-box-shadow: inset 1px 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #888;
+    -webkit-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#mainContent,
+#mainContent .forFlow {
+    margin-left: 0;
+}
+
+#homepage_top_pager,
+#leftcontentcontainer,
+#ad_t2,
+#cnblogs_c1,
+#under_post_news,
+#cnblogs_c2,
+#under_post_kb,
+#sideBar,
+#footer {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    #navList li:nth-last-child(1),
+    #navList li:nth-last-child(2),
+    #navList li:nth-last-child(3) {
+        display: none;
+    }
+}

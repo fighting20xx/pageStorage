@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link type="text/css" rel="stylesheet" href="./index.css"/>
+    <script src="../js/jquery.min.js"></script>
+</head>
+<body>
+<a name="top"></a>
+<div id="flotage" class="wall"></div>
+<div id="midground" class="wall"></div>
+<div id="foreground" class="wall"></div>
+<script>
+	$(document).ready(function() {
+
+
+		var a_index = 0;
+		$("body").click(function(e) {
+			let r = Math.random() * 255;
+			let g = Math.random() * 255;
+			let b = Math.random() * 255;
+			var color = "rgb(" + r + "," + g + "," + b + ")";
+			var a = new Array("HTML", "JavaScript", "CSS", "C#", ".NET", "ASP.NET", ".NET Core", "ASP.NET Core", "SqlServer", "MySQL", "Dapper", "EntityFramework", "jQuery", "Python", "Meowv", "阿星Plus", "Github", "WebApi", "ASP.NET MVC", "Vue", "React", "MVC", ".NET Standard");
+			var $i = $("<span/>").text(a[a_index]);
+			a_index = (a_index + 1) % a.length;
+			var x = e.pageX,
+				y = e.pageY;
+			var size = Math.random() * 10 + 8 + "px";
+			$i.css({
+				"z-index": 99999,
+				"top": y - 20,
+				"left": x,
+				"position": "absolute",
+				"font-weight": "800",
+				"font-size": size,
+				"color": color
+			});
+			$("body").append($i);
+			$i.animate({ "top": y - 200, "opacity": 0 }, 1500, function() {
+				$i.remove();
+			});
+		});
+	});
+</script>
+
+</body>
+</html>
