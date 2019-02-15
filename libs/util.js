@@ -5,14 +5,14 @@
  * @version 1.0
  */
 
-var _util = null;
 
-((function util() {
-	_util = window.util || {};
+
+((function (global) {
+	var _util =  global._util  || {};
 
 
 	// 添加到全局。
-	var Utils = window.util = {
+	var Utils = {
 		/**
 		 * 解决 util 冲突处理。
 		 * 返回小工具对象，由开发人员自己处理。
@@ -21,7 +21,7 @@ var _util = null;
 		 * @return {Object}
 		 */
 		conflict: function () {
-			window.util = _util;
+			window._util = _util;
 			return Utils;
 		},
 
@@ -304,23 +304,9 @@ var _util = null;
 
 		/**
 		 * 将对象转换成 URL 参数，并对字符进行转义。
+		 *  @param isEncodeURIComponent 是否编码，默认不编码
 		 */
-		toParams: function (oData) {
-			var asParams = [];
 
-			Object.keys(oData).forEach((sKey) => {
-				asParams.push(sKey + '=' + encodeURIComponent(oData[sKey]));
-			});
-
-			return asParams.join('&');
-		},
-		/*
-		 * 转换 obj 为 url params参数
-		 * @param obj 传入对象
-		 * @param isEncodeURIComponent 是否编码，默认不编码
-		 * @returns {String}
-		 * eg. objToParams({name:'大佬',age:18})
-		 */
 		objToParams(obj, isEncodeURIComponent = false) {
 			let str = "";
 			for (let key in obj) {
@@ -1291,7 +1277,15 @@ var _util = null;
 	Utils.extend(Utils, arrayUtil);
 	Utils.extend(Utils, gidUtil);
 	Utils.extend(Utils, colorUtil);
-}))();
 
 
-export default _util;
+	if (typeof module !== 'undefined' && module.exports) module.exports = Utils;
+	if (typeof define === 'function') define(function() { return Utils; });
+	if( global ) global._util = Utils;
+
+}))(this);
+
+
+
+
+
