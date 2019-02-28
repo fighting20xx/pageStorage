@@ -1,6 +1,6 @@
 /**
- * 小工具。              （util，tool都是工具）
- * 会将 util 注册到全局。  util 是和业务无关的，可以在其他地方使用，tool是和业务有关的， *
+ * 小工具。   兼容commonJS amd cmd
+ * 会将 util 注册到全局。   （util，tool都是工具） util 是和业务无关的，可以在其他地方使用，tool是和业务有关的， *
  * @since 2019-02-15
  * @version 1.0
  */
