@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播</title>
+    <style>
+        #box{
+            position: relative;
+            width: 500px;
+            height: 300px;
+            margin: 5px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+
+</div>
+
+<script>
+    function RunImg(options) {
+    	var ops = options || {};
+
+    	this.bigbox = null;
+    	this.boxul = null;
+    	this.imgList = ops.imgList || [];
+    	this.imgUrl = ops.imgUrl || [];
+    	this.bigbox = null;
+    	this.count = 0 ;
+    	this.index = 0 ;
+    	this.timer = null;
+    	this.paly = null;
+    }
+	RunImg.prototpye.$ = function (Element, str) {
+
+	}
+
+
+</script>
+</body>
+</html>
